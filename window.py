@@ -1,9 +1,6 @@
 from tkinter import *
-#import tkinter.scrolledtext as tkst
 from tkinter import scrolledtext
 from tkinter.ttk import *
-#from tkinter import messagebox
-#from _def import *
 
 '''
 output.configure(state='normal')
