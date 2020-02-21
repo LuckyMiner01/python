@@ -2,6 +2,10 @@ from tkinter import *
 from tkinter import scrolledtext
 from tkinter.ttk import *
 
+window = Tk()
+window.title('Leap year checker')
+window.resizable(False, False)
+
 '''
 output.configure(state='normal')
 output.insert(INSERT, '')
@@ -50,8 +54,6 @@ def year1():
         #output.configure(state='normal')
         #output.insert(INSERT, 'Sorry but you neeed to input a number')
         #output.configure(state='disabled')
-    
-    
 
 def year2():
     year2 = num2.get()
@@ -65,9 +67,7 @@ def year2():
         ly.configure(state='normal')
         nly.configure(state='normal')
         both.configure(state='normal')
-        
-        #op(num1, num2)
-        
+      
 def _rad():
     final.configure(state='enabled')
     
@@ -76,13 +76,6 @@ def _final():
     nly.configure(state='disabled')
     both.configure(state='disabled')
     final.configure(state='disabled')
-    
-window = Tk()
-window.title('Leap year checker')
-#window.attributes('-fullscreen', True)
-window.resizable(False, False)
-#w, h = window.winfo_screenwidth(), window.winfo_screenheight()
-#window.geometry("%dx%d+0+0" % (w, h))
 
 iframe = Frame(window)
 iframe.grid(row=0, column=0, padx=25)
@@ -119,10 +112,6 @@ butt2 = Button(iframe, text='This year', command=year2, state='disabled')
 butt2.grid(row=5, column=1)
 
 #----------------------------------------------------------------------------
-##num1 = num1.get()
-#num2 = num2.get()
-#num1 = int(num1)
-#num2 = int(num2)
 
 def op():
     ly.configure(state='disabled')
