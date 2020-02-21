@@ -6,19 +6,14 @@ window = Tk()
 window.title('Leap year checker')
 window.resizable(False, False)
 
-'''
-output.configure(state='normal')
-output.insert(INSERT, '')
-output.configure(state='disabled')
-'''
-
 def _help():
     output.configure(state='normal')
     output.insert(INSERT, '''INSTRUCTIONS:
 
-Type the year you want to count *from* in the first entry box, then press the button labled 'This Year' nex to that entry box
-Then type the year you want to count to in the second
-Then, if you only want to display either leap years or non-leap years, click the one you want, respectivly, but if you want to display both, click 'Both'
+Type the year you want to count *from* in the first entry box, then press the button labled 'This Year' nex to that entry box.
+Then type the year you want to count to in the second.
+You can't make the first number smalller than the second, it just wont work.
+Then, if you only want to display either leap years or non-leap years, click the one you want, respectivly, but if you want to display both, click 'Both'.
 **WARNING**
 If possible, try not to use a big gap between the starting and end year, since it can take a while to finish.
 If you do however make to big a gap and its taking to long or taking to many system resources, just X out of the program, or press the 'Quit' button.
@@ -37,7 +32,6 @@ def test():
 
 def year1():
     year1 = num1.get()
-    #year1 = int(year1)
     if year1.isdigit() == True:
         year1 = str(year1)
         output.configure(state='normal')
@@ -49,11 +43,6 @@ def year1():
         butt2.configure(state='normal')
         help.configure(state='disabled')
         num2.focus_set()
-        return year1
-    #elif year1.isdigit == False:
-        #output.configure(state='normal')
-        #output.insert(INSERT, 'Sorry but you neeed to input a number')
-        #output.configure(state='disabled')
 
 def year2():
     year2 = num2.get()
@@ -67,7 +56,7 @@ def year2():
         ly.configure(state='normal')
         nly.configure(state='normal')
         both.configure(state='normal')
-      
+        
 def _rad():
     final.configure(state='enabled')
     
@@ -123,32 +112,37 @@ def op():
     for x in range(a, b):
         x = x + 1
         if rad == 1:
+            ly_c = 0
             if x % 4 == 0:
                 #does leap years
                 x = str(x)
                 output.configure(state='normal')
-                output.insert(INSERT, x + ' is a leap year  \n')
+                output.tag_config(ly, foreground='green')
+                output.insert(INSERT, x + ' is a leap year  \n', ly)
                 output.configure(state='disabled')
+                lyc = lyc + 1
         elif rad == 2:
             if x % 4 != 0:
                 #does non leap years
                 x = str(x)
                 output.configure(state='normal')
-                output.insert(INSERT, x + ' isn\'t a leap year  \n')
+                output.tag_config(nly, foreground='red')
+                output.insert(INSERT, x + ' isn\'t a leap year  \n', nly)
                 output.configure(state='disabled')
         elif rad == 3:
             if x % 4 == 0:
                 x = str(x)
                 output.configure(state='normal')
-                output.insert(INSERT, x + ' is a leap year  \n')
+                output.tag_config(ly, foreground='green')
+                output.insert(INSERT, x + ' is a leap year  \n', ly)
                 output.configure(state='disabled')
             elif x % 4 != 0:
-                #does both
                 x = str(x)
                 output.configure(state='normal')
-                output.insert(INSERT, x + ' isn\'t a leap year  \n')
+                output.tag_config(nly, foreground='red')
+                output.insert(INSERT, x + ' isn\'t a leap year  \n', nly)
                 output.configure(state='disabled')
-         
+
 #----------------------------------------------------------------------------
 
 selected = IntVar()
